@@ -1,0 +1,3 @@
+rootProject.name='Acgn'
+include ':app'
+include ':player'

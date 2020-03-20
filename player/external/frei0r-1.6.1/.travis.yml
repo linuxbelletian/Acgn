@@ -1,0 +1,9 @@
+language: c
+before_script:
+- sudo apt-get -qq update
+- sudo apt-get build-dep frei0r-plugins
+script:
+- ./autogen.sh && ./configure && make -j
+sudo: required
+dist: trusty
+
