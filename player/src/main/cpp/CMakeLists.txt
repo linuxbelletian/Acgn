@@ -8,6 +8,8 @@ cmake_minimum_required(VERSION 3.10.0 FATAL_ERROR)
 set(EXTERNAL_DIR "${CMAKE_CURRENT_SOURCE_DIR}/../../../external")
 include(ExternalProject)
 
+link_directories(${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib)
+include_directories(${CMAKE_CURRENT_BINARY_DIR}/sysroot/include)
 
 include(abis.cmake)
 include(external/expat.cmake)

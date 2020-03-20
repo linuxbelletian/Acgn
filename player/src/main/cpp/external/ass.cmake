@@ -44,6 +44,4 @@ ExternalProject_Add(EP-${E_NAME}
         ${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib/libass.a
         )
 
-link_directories(${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib)
-include_directories(${CMAKE_CURRENT_BINARY_DIR}/sysroot/include)
 set(LIBASS ass)
