@@ -3,7 +3,7 @@
 
 set(E_NAME "ffmpeg")
 set(E_SOURCE_DIR_NAME "ffmpeg-4.2.2")
-#MESSAGE(FATAL_ERROR "${ANDROID_TOOLCHAIN_PREFIX}")
+#MESSAGE(FATAL_ERROR "${CMAKE_ANDROID_ARCH}")
 
 ExternalProject_Add(EP-${E_NAME}
         PREFIX
@@ -30,10 +30,18 @@ ExternalProject_Add(EP-${E_NAME}
         --cross-prefix=${ANDROID_TOOLCHAIN_PREFIX}
         --cc=${ANDROID_TOOLCHAIN_ROOT}/bin/${TARGET}${ANDROID_NATIVE_API_LEVEL}-clang
         --cxx=${ANDROID_TOOLCHAIN_ROOT}/bin/${TARGET}${ANDROID_NATIVE_API_LEVEL}-clang++
-        --extra-cflags=${CMAKE_C_FLAGS}
-        --extra-cxxflags=${CMAKE_CXX_FLAGS}
-        --enable-pic
+        --ld=${ANDROID_TOOLCHAIN_PREFIX}ld
+        --nm=${ANDROID_TOOLCHAIN_PREFIX}nm
+        --ar=${ANDROID_TOOLCHAIN_PREFIX}ar
+        --as=${ANDROID_TOOLCHAIN_PREFIX}as
+        --ranlib=${ANDROID_TOOLCHAIN_PREFIX}ranlib
+        --strip=${ANDROID_TOOLCHAIN_PREFIX}strip
+        --disable-asm
         --disable-x86asm
+
+        COMMAND
+        ${EXTERNAL_DIR}/../buildscripts/ffmpeg_fix_header.sh
+
         BUILD_BYPRODUCTS
         ${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib/libavformat.a
         ${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib/libavcodec.a
