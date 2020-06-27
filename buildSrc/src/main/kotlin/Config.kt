@@ -1,0 +1,5 @@
+object Config {
+    object Application {
+
+    }
+}

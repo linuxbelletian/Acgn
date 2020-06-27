@@ -6,7 +6,7 @@ class HelloJni {
     companion object {
 
         init {
-            System.loadLibrary("player")
+            java.lang.System.loadLibrary("player")
         }
 
         val pngVersion: Int = nativePngVersion()
