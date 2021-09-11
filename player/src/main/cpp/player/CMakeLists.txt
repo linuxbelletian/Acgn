@@ -4,7 +4,7 @@
 # You can define multiple libraries, and CMake builds them for you.
 # Gradle automatically packages shared libraries with your APK.
 
-AUX_SOURCE_DIRECTORY(. src-player)
+#AUX_SOURCE_DIRECTORY(. src-player)
 
 add_library( # Sets the name of the library.
         player
@@ -13,7 +13,8 @@ add_library( # Sets the name of the library.
         SHARED
 
         # Provides a relative path to your source file(s).
-        ${src-player})
+#        ${src-player})
+        native-lib.cpp)
 
 # Searches for a specified prebuilt library and stores the path as a
 # variable. Because CMake includes system libraries in the search path by
@@ -40,22 +41,23 @@ target_link_libraries( # Specifies the target library.
         # Links the target library to the log library
         # included in the NDK.
         ${log-lib}
-        -lpng
-        -lavfilter
-        -lavformat
-        -lavcodec
-        -lswresample
-        -lswscale
-        -lavutil
+#        -lpng
+#        -lavfilter
+#        -lavformat
+#        -lavcodec
+#        -lswresample
+#        -lswscale
+#        -lavutil
 #        ${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib/libavfilter.a
 #        ${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib/libavformat.a
 #        ${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib/libavcodec.a
 #        ${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib/libswresample.a
 #        ${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib/libswscale.a
 #        ${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib/libavutil.a
-        -lz
-        -lm
+#        -lz
+#        -lm
 #        SDL2
         )
 
-add_dependencies(player EP-png EP-uuid EP-expat EP-ass EP-fribidi EP-ffmpeg)
+#add_dependencies(player EP-png EP-uuid EP-expat EP-ass EP-fribidi EP-ffmpeg)
+add_dependencies(player EP-expat)

@@ -34,6 +34,7 @@ ExternalProject_Add(EP-${E_NAME}
         --nm=${ANDROID_TOOLCHAIN_PREFIX}nm
         --ar=${ANDROID_TOOLCHAIN_PREFIX}ar
         --as=${ANDROID_TOOLCHAIN_PREFIX}as
+        --pkg-config=pkg-config
         --ranlib=${ANDROID_TOOLCHAIN_PREFIX}ranlib
         --strip=${ANDROID_TOOLCHAIN_PREFIX}strip
         --disable-asm

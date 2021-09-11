@@ -4,7 +4,9 @@
 
 #pragma once
 
-namespace Acgn {
+#include <libavformat/avformat.h>
+
+namespace Acgn {   
     /*
      * 专门用于 处理数据读取的线程
      *
@@ -18,9 +20,16 @@ namespace Acgn {
      *      2. avformat_find_stream_info //
      *      3. av_find_best_stream
      *      4. stream_component_open
+     * avformat_open_input用于打开输入文件，（对于网络流也是一样，在ffmpeg内部都抽象为URLProtocol,
+     * 这里描述为文件是为了方便与后续提到的AVStream的流作区分), 读取视频评鉴的基本信息
+     *
      */
     class ReadThread {
-
+    private:
+        AVFormatContext &ic;
+    public:
+        ReadThread();
+        void read();
     };
 
 } // end namespace Acgn

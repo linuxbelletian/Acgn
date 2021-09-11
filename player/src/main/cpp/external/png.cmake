@@ -2,8 +2,6 @@ set(E_NAME "png")
 set(E_SOURCE_DIR_NAME "libpng-1.6.37")
 
 ExternalProject_Add(EP-${E_NAME}
-        PREFIX
-            ${CMAKE_CURRENT_BINARY_DIR}/sysroot
         INSTALL_DIR
             ${CMAKE_CURRENT_BINARY_DIR}/sysroot
         SOURCE_DIR

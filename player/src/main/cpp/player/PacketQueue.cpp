@@ -5,6 +5,7 @@
 
 
 #include "PacketQueue.h"
+#include <new>
 
 
 Acgn::PacketQueue::PacketQueue() {
@@ -58,7 +59,7 @@ int Acgn::PacketQueue::get(AVPacket *pkt, int block, int *_serial) {
             nb_packets--;
             size -= node1->pkt.size + sizeof(*node1);
             duration -= node1->pkt.duration;
-            *pkt = node1->pkt;
+            pkt = &node1->pkt;
             if (_serial)
                 *_serial = node1->serial;
             av_free(node1);
@@ -124,9 +125,12 @@ void Acgn::PacketQueue::flush() {
 int Acgn::PacketQueue::private_put(AVPacket *pkt) {
     Node *node1 = nullptr;
 
-    if (abort_request) return -1;
+    AVPacket *p = av_packet_alloc();
 
-    node1 = static_cast<Node *>(av_malloc(sizeof(Node)));
+    if (abort_request) return -1;
+    // here we using c++ new to replace it
+    //    node1 = static_cast<Node *>(av_malloc(sizeof(Node)));
+    node1 = new (std::nothrow) Node{};
     if (!node1) // 内存不足
         return -1;
 
@@ -143,7 +147,7 @@ int Acgn::PacketQueue::private_put(AVPacket *pkt) {
         last->next = node1;
     last = node1;
 
-    // 队列属性操作，增加节点数骂， cache大小， cache总时间长度
+    // 队列属性操作，增加节点数， cache大小， cache总时间长度
     nb_packets++;
     size += node1->pkt.size + sizeof(*node1);
     duration += node1->pkt.duration;

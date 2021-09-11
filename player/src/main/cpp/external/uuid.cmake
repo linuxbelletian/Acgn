@@ -5,7 +5,7 @@ set(E_NAME "uuid")
 set(E_SOURCE_DIR_NAME "libuuid-1.0.3")
 
 ExternalProject_Add(EP-${E_NAME}
-        PREFIX
+        INSTALL_DIR
             ${CMAKE_CURRENT_BINARY_DIR}/sysroot
         SOURCE_DIR
             ${EXTERNAL_DIR}/${E_SOURCE_DIR_NAME}
