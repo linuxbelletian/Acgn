@@ -5,8 +5,6 @@ set(E_NAME "fribidi")
 set(E_SOURCE_DIR_NAME "fribidi-1.0.9")
 
 ExternalProject_Add(EP-${E_NAME}
-        PREFIX
-        ${CMAKE_CURRENT_BINARY_DIR}/sysroot
         SOURCE_DIR
         ${EXTERNAL_DIR}/${E_SOURCE_DIR_NAME}
         CONFIGURE_COMMAND
@@ -39,7 +37,7 @@ ExternalProject_Add(EP-${E_NAME}
         --disable-fast-install
         --host=${TARGET}
         BUILD_BYPRODUCTS
-        ${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib/libass.a
+        ${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib/libfribidi.a
         )
 
 set(LIBASS ${E_NAME})

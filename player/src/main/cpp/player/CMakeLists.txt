@@ -60,4 +60,3 @@ target_link_libraries( # Specifies the target library.
         )
 
 #add_dependencies(player EP-png EP-uuid EP-expat EP-ass EP-fribidi EP-ffmpeg)
-add_dependencies(player EP-expat)

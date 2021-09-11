@@ -14,13 +14,21 @@ include_directories(${CMAKE_CURRENT_BINARY_DIR}/sysroot/include)
 
 include(abis.cmake)
 include(external/expat.cmake)
-#include(external/png.cmake)
-#include(external/uuid.cmake)
-#include(external/ass.cmake)
-#include(external/fribidi.cmake)
+include(external/png.cmake)
+include(external/uuid.cmake)
+include(external/ass.cmake)
+include(external/fribidi.cmake)
 #include(external/sdl2.cmake)
-#include(external/ffmpeg.cmake)
+include(external/ffmpeg.cmake)
 
 #add_subdirectory(external)
 add_subdirectory(player)
 #add_subdirectory(SDL2)
+add_dependencies(player
+        EP-expat
+        EP-png
+        EP-ass
+        EP-fribidi
+        EP-uuid
+        EP-ffmpeg
+        )

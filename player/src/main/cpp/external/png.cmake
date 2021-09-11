@@ -12,11 +12,10 @@ ExternalProject_Add(EP-${E_NAME}
             -DANDROID_NATIVE_API_LEVEL=${ANDROID_NATIVE_API_LEVEL}
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
             -DPNG_SHARED=OFF
+            _DPNG_TESTS=OFF
             -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/sysroot
         CMAKE_CACHE_ARGS
             -DCMAKE_CXX_FLAGS:STRING=${CMAKE_CXX_FLAGS}
-        BUILD_ALWAYS
-            1
         BUILD_BYPRODUCTS
             ${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib/libpng.a
         )

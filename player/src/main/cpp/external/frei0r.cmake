@@ -2,8 +2,6 @@ set(E_NAME "frei0r.cmake")
 set(E_SOURCE_DIR_NAME "frei0r-1.6.1")
 
 ExternalProject_Add(EP-${E_NAME}
-        PREFIX
-        ${CMAKE_CURRENT_BINARY_DIR}/sysroot
         INSTALL_DIR
         ${CMAKE_CURRENT_BINARY_DIR}/sysroot
         SOURCE_DIR
@@ -17,8 +15,6 @@ ExternalProject_Add(EP-${E_NAME}
         CMAKE_CACHE_ARGS
         -DCMAKE_CXX_FLAGS:STRING=${CMAKE_CXX_FLAGS}
         -DCMAKE_C_FLAGS:STRING=${CMAKE_C_FLAGS}
-        BUILD_ALWAYS
-        1
         BUILD_BYPRODUCTS
         ${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib/libchromaprint.a
         )

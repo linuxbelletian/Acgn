@@ -2,8 +2,6 @@ set(E_NAME "SDL2")
 set(E_SOURCE_DIR_NAME "SDL2-2.0.10")
 
 ExternalProject_Add(EP-${E_NAME}
-        PREFIX
-        ${CMAKE_CURRENT_BINARY_DIR}/sysroot
         INSTALL_DIR
         ${CMAKE_CURRENT_BINARY_DIR}/sysroot
         SOURCE_DIR
@@ -17,8 +15,6 @@ ExternalProject_Add(EP-${E_NAME}
         CMAKE_CACHE_ARGS
         -DCMAKE_CXX_FLAGS:STRING=${CMAKE_CXX_FLAGS}
         -DHIDAPI:BOOL=ON
-        BUILD_ALWAYS
-        1
         BUILD_BYPRODUCTS
         ${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib/libSDL2.a
         )

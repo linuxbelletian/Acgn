@@ -5,8 +5,6 @@ set(E_NAME "ass")
 set(E_SOURCE_DIR_NAME "libass-0.14.0")
 
 ExternalProject_Add(EP-${E_NAME}
-        PREFIX
-        ${CMAKE_CURRENT_BINARY_DIR}/${E_NAME}
         SOURCE_DIR
         ${EXTERNAL_DIR}/${E_SOURCE_DIR_NAME}
         CONFIGURE_COMMAND
