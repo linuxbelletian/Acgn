@@ -32,9 +32,9 @@ android {
 dependencies {
     implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
     implementation(kotlin("stdlib-jdk8", Version.Kotlin.kotlinVersion))
-//    implementation(Depends.Androidx.appcomat)
-//    implementation(Depends.Androidx.coreKtx)
-//    testImplementation(Depends.Test.junit)
-//    androidTestImplementation(Depends.AndroidTest.extJunit)
-//    androidTestImplementation(Depends.AndroidTest.espresso)
+    implementation(Depends.Androidx.appcomat)
+    implementation(Depends.Androidx.coreKtx)
+    testImplementation(Depends.Test.junit)
+    androidTestImplementation(Depends.AndroidTest.extJunit)
+    androidTestImplementation(Depends.AndroidTest.espresso)
 }
