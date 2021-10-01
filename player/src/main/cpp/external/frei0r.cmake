@@ -1,4 +1,4 @@
-set(E_NAME "frei0r.cmake")
+set(E_NAME "frei0r")
 set(E_SOURCE_DIR_NAME "frei0r-1.6.1")
 
 ExternalProject_Add(EP-${E_NAME}
@@ -19,4 +19,4 @@ ExternalProject_Add(EP-${E_NAME}
         ${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib/libchromaprint.a
         )
 
-set(LIBEXPAT expat)
+set(LIBFREI0R frei0r)

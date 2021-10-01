@@ -1,6 +1,6 @@
 object Version {
     object Kotlin {
-        const val kotlinVersion = "1.5.30"
+        const val kotlinVersion = "1.5.31"
 
         const val gradlePlugin = kotlinVersion
     }
@@ -15,11 +15,11 @@ object Version {
     }
 
     object Androidx {
-        const val appcompat = "1.1.0"
+        const val appcompat = "1.3.1"
         const val lifecycle = "2.2.0"
         const val navigation = "2.3.0"
         const val arch = "2.1.0"
-        const val coreKtx = "1.3.1"
+        const val coreKtx = "1.6.0"
         const val room = "2.2.5"
         const val paging = "3.0.0"
         const val viewpager2 = "1.0.0"
@@ -38,12 +38,12 @@ object Version {
     }
 
     object AndroidTest {
-        const val extJunit = "1.1.1"
-        const val espresso = "3.2.0"
+        const val extJunit = "1.1.3"
+        const val espresso = "3.4.0"
         const val roomTesting = Androidx.room
     }
 
     object JavaTest {
-        const val junit = "4.13"
+        const val junit = "4.13.2"
     }
 }

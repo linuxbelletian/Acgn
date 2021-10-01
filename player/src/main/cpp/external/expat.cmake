@@ -1,19 +1,21 @@
 set(E_NAME "expat")
-set(E_SOURCE_DIR_NAME "expat-2.2.7")
 
 ExternalProject_Add(EP-${E_NAME}
-        SOURCE_DIR
-            ${EXTERNAL_DIR}/${E_SOURCE_DIR_NAME}
+        GIT_REPOSITORY https://github.com/libexpat/libexpat.git
+        GIT_TAG R_2_4_1
+        GIT_SHALLOW TRUE
+        SOURCE_SUBDIR expat
         CMAKE_ARGS
             -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK}/build/cmake/android.toolchain.cmake
             -DANDROID_ABI=${ANDROID_ABI}
             -DANDROID_NATIVE_API_LEVEL=${ANDROID_NATIVE_API_LEVEL}
             -DCMAKE_BUILD_TYPE=${CMAKE_BUILD_TYPE}
             -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_BINARY_DIR}/sysroot
-            -DBUILD_shared=OFF
-            -DBUILD_doc=OFF
-            -DBUILD_examples=OFF
-            -DBUILD_tests=OFF
+            -DEXPAT_BUILD_DOCS=OFF
+            -DEXPAT_BUILD_TOOLS=OFF
+            -DEXPAT_BUILD_EXAMPLES=OFF
+            -DEXPAT_BUILD_TESTS=OFF
+            -DEXPAT_SHARED_LIBS=OFF
         CMAKE_CACHE_ARGS
             -DCMAKE_CXX_FLAGS:STRING=${CMAKE_CXX_FLAGS}
         BUILD_BYPRODUCTS

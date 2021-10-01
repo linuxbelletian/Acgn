@@ -2,32 +2,13 @@
 ## Also see https://developer.android.com/ndk/guides/cmake
 
 set(E_NAME "fribidi")
-set(E_SOURCE_DIR_NAME "fribidi-1.0.9")
 
 ExternalProject_Add(EP-${E_NAME}
-        SOURCE_DIR
-        ${EXTERNAL_DIR}/${E_SOURCE_DIR_NAME}
+        GIT_REPOSITORY https://github.com/fribidi/fribidi.git
+        GIT_TAG v1.0.11
+        GIT_SHALLOW TRUE
         CONFIGURE_COMMAND
-        export CC=${ANDROID_TOOLCHAIN_ROOT}/bin/${TARGET}${ANDROID_NATIVE_API_LEVEL}-clang
-        export CXX=${ANDROID_TOOLCHAIN_ROOT}/bin/${TARGET}${ANDROID_NATIVE_API_LEVEL}-clang++
-        export CFLAGS=${CMAKE_C_FLAGS}
-        export CXXFLAGS=${CMAKE_CXX_FLAGS}
-        export LD=${CMAKE_LINKER}
-        export AR=${CMAKE_AR}
-        export NM=${CMAKE_NM}
-        export AS=${ANDROID_TOOLCHAIN_PREFIX}as
-        export RANLIB=${CMAKE_RANLIB}
-        export STRIP=${CMAKE_STRIP}
-        export OBJDUMP=${CMAKE_OBJDUMP}
-        export ADDR2LINE=${ANDROID_TOOLCHAIN_PREFIX}addr2line
-        export DWP=${ANDROID_TOOLCHAIN_PREFIX}dwp
-        export ELFEDIT=${ANDROID_TOOLCHAIN_PREFIX}elfedit
-        export OBJCOPY=${CMAKE_OBJCOPY}
-        export READELF=${ANDROID_TOOLCHAIN_PREFIX}readelf
-        export SIZE=${ANDROID_TOOLCHAIN_PREFIX}size
-        export STRINGS=${ANDROID_TOOLCHAIN_PREFIX}strings
-        COMMAND
-        ${EXTERNAL_DIR}/${E_SOURCE_DIR_NAME}/configure
+        <SOURCE_DIR>/configure ${TOOLCHAINS}
         --prefix=${CMAKE_CURRENT_BINARY_DIR}/sysroot
         --with-pic
         --enable-static
@@ -36,8 +17,15 @@ ExternalProject_Add(EP-${E_NAME}
         --disable-shared
         --disable-fast-install
         --host=${TARGET}
+
         BUILD_BYPRODUCTS
         ${CMAKE_CURRENT_BINARY_DIR}/sysroot/lib/libfribidi.a
+        )
+
+ExternalProject_Add_Step(EP-${E_NAME} autogen
+        COMMAND              <SOURCE_DIR>/autogen.sh
+        DEPENDEES            update
+        DEPENDERS            configure
         )
 
 set(LIBASS ${E_NAME})

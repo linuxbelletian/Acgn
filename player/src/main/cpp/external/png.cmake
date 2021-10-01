@@ -1,11 +1,7 @@
-set(E_NAME "png")
-set(E_SOURCE_DIR_NAME "libpng-1.6.37")
-
-ExternalProject_Add(EP-${E_NAME}
-        INSTALL_DIR
-            ${CMAKE_CURRENT_BINARY_DIR}/sysroot
-        SOURCE_DIR
-            ${EXTERNAL_DIR}/${E_SOURCE_DIR_NAME}
+ExternalProject_Add(EP-png
+        GIT_REPOSITORY https://github.com/glennrp/libpng.git
+        GIT_TAG v1.6.37
+        GIT_SHALLOW TRUE
         CMAKE_ARGS
             -DCMAKE_TOOLCHAIN_FILE=${ANDROID_NDK}/build/cmake/android.toolchain.cmake
             -DANDROID_ABI=${ANDROID_ABI}

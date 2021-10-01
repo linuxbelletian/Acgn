@@ -43,7 +43,7 @@ android {
     externalNativeBuild {
         cmake {
             path = file("src/main/cpp/CMakeLists.txt")
-            version = "3.21.2"
+            version = "3.21.3"
         }
     }
 
@@ -64,5 +64,5 @@ dependencies {
     androidTestImplementation("androidx.test.ext:junit:${Version.AndroidTest.extJunit}")
     androidTestImplementation("androidx.test.espresso:espresso-core:${Version.AndroidTest.espresso}")
     implementation("androidx.core:core-ktx:${Version.Androidx.coreKtx}")
-    implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8:${Version.Kotlin.kotlinVersion}")
+    implementation(kotlin("stdlib-jdk8", Version.Kotlin.kotlinVersion))
 }

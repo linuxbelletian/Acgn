@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 2.8.12)
 
+cmake_policy(SET CMP0074 NEW)
+
 if(POLICY CMP0042)
 	cmake_policy(SET CMP0042 NEW)
 endif()
